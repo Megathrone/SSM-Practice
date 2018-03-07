@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="pojo.myxml">
+    <select id="listCategory" resultMap="categoryBean">
+        select c.*, p.*, c.id 'cid', p.id 'pid', c.name 'cname', p.name 'pname'
+        from category_ c left join product_ p on c.id = p.cid
+    </select>
+
+    <!--<insert id="addCategory" parameterType="Category">-->
+        <!--INSERT INTO category_ (name) VALUES (#{name})-->
+    <!--</insert>-->
+
+    <!--<delete id="deleteCategory" parameterType="Category">-->
+        <!--DELETE FROM category_ WHERE id= #{id}-->
+    <!--</delete>-->
+
+    <!--<update id="updateCategory" parameterType="Category">-->
+        <!--UPDATE category_ set name = #{name} WHERE id = #{id}-->
+    <!--</update>-->
+
+    <!--<select id="getCategory" parameterType="_int" resultType="Category">-->
+        <!--SELECT * FROM  category_ WHERE id = #{id}-->
+    <!--</select>-->
+
+    <!--<select id="listCategoryByIdAndName" parameterType="map" resultType="Category">-->
+        <!--SELECT * FROM category_ WHERE id>#{id} and name like concat('%',#{name},'%')-->
+    <!--</select>-->
+    
+    
+    <resultMap id="categoryBean" type="Category">
+        <id column="cid" property="id"/>
+        <result column="cname" property="name"/>
+
+        <collection property="products" ofType="Product">
+            <id column="pid" property="id"/>
+            <result column="pname" property="name"/>
+            <result column="price" property="price"/>
+        </collection>
+    </resultMap>
+</mapper>
