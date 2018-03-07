@@ -20,3 +20,12 @@
 
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
+Mybatis/out/production/Mybatis/pojo/pxml/Product.xml
+Mybatis/.idea/libraries/lib.xml
+Mybatis/.idea/misc.xml
+Mybatis/.idea/modules.xml
+Mybatis/.idea/vcs.xml
+Mybatis/.idea/workspace.xml
+Mybatis/Mybatis.iml
+Mybatis/out/production/Mybatis/mybatis-config.xml
+Mybatis/out/production/Mybatis/pojo/pxml/Category.xml
