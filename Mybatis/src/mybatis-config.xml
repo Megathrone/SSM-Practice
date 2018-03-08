@@ -20,5 +20,7 @@
     <mappers>
         <mapper resource="pojo/pxml/Category.xml"/>
         <mapper resource="pojo/pxml/Product.xml"/>
+        <mapper class="mapper.CategoryMapper"/>
+        <mapper class="mapper.ProductMapper"/>
     </mappers>
 </configuration>

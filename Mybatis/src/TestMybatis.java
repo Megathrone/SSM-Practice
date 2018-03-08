@@ -1,3 +1,4 @@
+import mapper.CategoryMapper;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.*;
 import pojo.Category;
@@ -17,28 +18,46 @@ public class TestMybatis {
                 SqlSessionFactoryBuilder().build(inputStream);
         SqlSession session = sqlSessionFactory.openSession();
 
-        HashMap<String,Object> params = new HashMap<>();
-        params.put("id",1);
-        params.put("name","cat");
+        CategoryMapper mapper = session.getMapper(CategoryMapper.class);
+        update(mapper,1);
+        listAll(mapper);
 
-        System.out.println("查询所有");
-        List<Product> ps = session.selectList("listProductPro");
-        for(Product p : ps){
-            System.out.println(p);
-        }
-
-        System.out.println("模糊查询");
-        Map<String,Object> map = new HashMap<>();
-        map.put("name","a");
-        List<Product> ps2 = session.selectList("listProductPro",map);
-        for(Product p:ps2){
-            System.out.println(p);
-        }
         session.commit();
         session.close();
 
     }
+    private static void update(CategoryMapper mapper,int i){
+        Category c = mapper.get(i);
+        c.setName("category1");
+        mapper.update(c);
+        listAll(mapper);
+    }
+    private static void get(CategoryMapper mapper) {
+        Category c= mapper.get(8);
+        System.out.println(c.getName());
+    }
 
+    private static void delete(CategoryMapper mapper) {
+        mapper.delete(3);
+        listAll(mapper);
+    }
+
+    private static void add(CategoryMapper mapper) {
+        Category c = new Category();
+        c.setName("新增加的Category");
+        mapper.add(c);
+        listAll(mapper);
+    }
+    private static void listAll(CategoryMapper mapper) {
+        List<Category> cs = mapper.list();
+        for (Category c : cs) {
+            System.out.println(c.getName());
+            List<Product> ps = c.getProducts();
+            for(Product p:ps){
+                System.out.println("\t"+p.getName());
+            }
+        }
+    }
     private static void listAll(SqlSession session){
         List<Category> cs = session.selectList("listCategory");
         for(Category c : cs){

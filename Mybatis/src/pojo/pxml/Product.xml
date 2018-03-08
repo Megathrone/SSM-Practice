@@ -22,8 +22,18 @@
 
     <select id="listProductPro" resultType="Product">
         SELECT * FROM product_
-        <if test="name!=null">
-            WHERE name LIKE concat('%',#{name},'%')
-        </if>
+        <where>
+            <choose>
+                <when test="name!=null">
+                    and NAME LIKE concat('%',#{name},'%')
+                </when>
+                <when test="price !=null and price !=0">
+                    and price > #{price}
+                </when>
+                <otherwise>
+                    and id > 1
+                </otherwise>
+            </choose>
+        </where>
     </select>
 </mapper>
