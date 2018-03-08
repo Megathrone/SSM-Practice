@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class TestMybatis {
     public static void main(String[] args) throws IOException{
@@ -20,15 +21,19 @@ public class TestMybatis {
         params.put("id",1);
         params.put("name","cat");
 
-        List<Category> cs = session.selectList("listCategory");
-        for(Category c: cs){
-            System.out.println(c);
-            List<Product> ps = c.getProducts();
-            for (Product p:ps){
-                System.out.println("\t"+p);
-            }
+        System.out.println("查询所有");
+        List<Product> ps = session.selectList("listProductPro");
+        for(Product p : ps){
+            System.out.println(p);
         }
-        //listAll(session);
+
+        System.out.println("模糊查询");
+        Map<String,Object> map = new HashMap<>();
+        map.put("name","a");
+        List<Product> ps2 = session.selectList("listProductPro",map);
+        for(Product p:ps2){
+            System.out.println(p);
+        }
         session.commit();
         session.close();
 

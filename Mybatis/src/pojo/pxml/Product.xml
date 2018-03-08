@@ -4,7 +4,26 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="pojo.pxml">
-    <select id="listProduct" resultType="Product">
-        select * from Product_
+    <resultMap id="productBean" type="Product">
+        <id column="pid" property="name"/>
+        <result column="pname" property="name"/>
+        <result column="price" property="price"/>
+        
+        <association property="category" javaType="Category">
+            <id column="cid" property="id"/>
+            <result column="cname" property="name"/>
+        </association>
+    </resultMap>
+
+    <select id="listProduct" resultMap="productBean">
+        select c.*, p.*, c.id 'cid', p.id 'pid', c.name 'cname', p.name 'pname'
+        from category_ c left join product_ p on c.id = p.cid
+    </select>
+
+    <select id="listProductPro" resultType="Product">
+        SELECT * FROM product_
+        <if test="name!=null">
+            WHERE name LIKE concat('%',#{name},'%')
+        </if>
     </select>
 </mapper>
