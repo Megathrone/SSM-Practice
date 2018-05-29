@@ -49,13 +49,17 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TestShiro.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/com/megathrone/TestShiro.java">
+      <file leaf-file-name="ShiroTest.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/com/megathrone/ShiroTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="28">
-              <caret line="71" column="35" lean-forward="true" selection-start-line="71" selection-start-column="35" selection-end-line="71" selection-end-column="35" />
+            <state relative-caret-position="429">
+              <caret line="124" column="51" selection-start-line="124" selection-start-column="51" selection-end-line="124" selection-end-column="51" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="method#hasRole#0;class#ShiroTest#0" />
+                <element signature="method#isPermiited#0;class#ShiroTest#0" />
+                <element signature="method#getSubject#0;class#ShiroTest#0" />
+                <element signature="method#login#0;class#ShiroTest#0" />
               </folding>
             </state>
           </provider>
@@ -77,6 +81,7 @@
         <option value="$PROJECT_DIR$/src/shiro.ini" />
         <option value="$PROJECT_DIR$/src/com/megathrone/User.java" />
         <option value="$PROJECT_DIR$/src/com/megathrone/TestShiro.java" />
+        <option value="$PROJECT_DIR$/src/com/megathrone/ShiroTest.java" />
       </list>
     </option>
   </component>
@@ -173,9 +178,20 @@
       </list>
     </option>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.ShiroTest">
     <configuration default="true" type="Applet" factoryName="Applet">
       <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+    </configuration>
+    <configuration name="ShiroTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.megathrone.ShiroTest" />
+      <module name="Shiro" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.megathrone.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
     </configuration>
     <configuration name="TestShiro" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.megathrone.TestShiro" />
@@ -229,8 +245,13 @@
       <properties />
       <listeners />
     </configuration>
+    <list>
+      <item itemvalue="Application.TestShiro" />
+      <item itemvalue="Application.ShiroTest" />
+    </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.ShiroTest" />
         <item itemvalue="Application.TestShiro" />
       </list>
     </recent_temporary>
@@ -246,12 +267,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1527501830194</updated>
-      <workItem from="1527501834572" duration="1544000" />
+      <workItem from="1527501834572" duration="3285000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1544000" />
+    <option name="totallyTimeSpent" value="3285000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="42" y="23" width="1238" height="777" extended-state="0" />
@@ -271,7 +292,7 @@
       <window_info anchor="bottom" id="Terminal" weight="0.32876712" />
       <window_info id="Capture Tool" />
       <window_info id="Designer" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.23076923" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.23076923" />
       <window_info anchor="right" id="Database" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -327,10 +348,24 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/megathrone/TestShiro.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="28">
+        <state relative-caret-position="-50">
           <caret line="71" column="35" lean-forward="true" selection-start-line="71" selection-start-column="35" selection-end-line="71" selection-end-column="35" />
           <folding>
             <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/megathrone/ShiroTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="429">
+          <caret line="124" column="51" selection-start-line="124" selection-start-column="51" selection-end-line="124" selection-end-column="51" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#hasRole#0;class#ShiroTest#0" />
+            <element signature="method#isPermiited#0;class#ShiroTest#0" />
+            <element signature="method#getSubject#0;class#ShiroTest#0" />
+            <element signature="method#login#0;class#ShiroTest#0" />
           </folding>
         </state>
       </provider>
@@ -352,7 +387,7 @@
       </state>
       <state key="FacetStructureConfigurable.UI">
         <settings>
-          <last-edited>No facets are configured</last-edited>
+          <last-edited />
           <splitter-proportions>
             <option name="proportions">
               <list>
