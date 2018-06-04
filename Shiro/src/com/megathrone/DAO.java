@@ -1,5 +1,8 @@
 package com.megathrone;
 
+import org.apache.shiro.crypto.SecureRandomNumberGenerator;
+import org.apache.shiro.crypto.hash.SimpleHash;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -39,6 +42,55 @@ public class DAO {
             e.printStackTrace();
         }
         return null;
+    }
+
+    public String createUser(String name, String password) {
+
+        String sql = "insert into user values(null,?,?,?)";
+
+        // Create salt randomly
+        String salt = new SecureRandomNumberGenerator().nextBytes().toString();
+        // Using md5 for twice time
+        int hashIterations = 2;
+        String encodedPassword = new SimpleHash("md5",
+                password, salt, hashIterations).toString();
+
+        try (Connection c = getConnection(); PreparedStatement ps = c.prepareStatement(sql);) {
+
+            ps.setString(1, name);
+            ps.setString(2, encodedPassword);
+            ps.setString(3, salt);
+            ps.execute();
+        } catch (SQLException e) {
+
+            e.printStackTrace();
+        }
+        return null;
+
+    }
+
+    public User getUser(String userName) {
+        User user = null;
+        String sql = "select * from user where name = ?";
+        try (Connection c = getConnection(); PreparedStatement ps = c.prepareStatement(sql);) {
+
+            ps.setString(1, userName);
+
+            ResultSet rs = ps.executeQuery();
+
+            if (rs.next()) {
+                user = new User();
+                user.setId(rs.getInt("id"));
+                user.setName(rs.getString("name"));
+                user.setPassword(rs.getString("password"));
+                user.setSalt(rs.getString("salt"));
+            }
+
+        } catch (SQLException e) {
+
+            e.printStackTrace();
+        }
+        return user;
     }
 
     public Set<String> listRoles(String userName) {

@@ -13,74 +13,18 @@ import org.apache.shiro.util.Factory;
 
 public class TestShiro {
     public static void main(String[] args) {
-        //用户们
-        User zhang3 = new User();
-        zhang3.setName("zhang3");
-        zhang3.setPassword("12345");
+        //这里要释放注释，先注册一个用户
+       // new DAO().createUser("zhouy", "123");
 
-        User li4 = new User();
-        li4.setName("li4");
-        li4.setPassword("abcde");
+        User user = new User();
+        user.setName("zhouy");
+        user.setPassword("123");
 
-        User wang5 = new User();
-        wang5.setName("wang5");
-        wang5.setPassword("wrongpassword");
+        if(login(user))
+            System.out.println("登录成功");
+        else
+            System.out.println("登录失败");
 
-        List<User> users = new ArrayList<>();
-
-        users.add(zhang3);
-        users.add(li4);
-        users.add(wang5);
-        //角色们
-        String roleAdmin = "admin";
-        String roleProductManager ="productManager";
-
-        List<String> roles = new ArrayList<>();
-        roles.add(roleAdmin);
-        roles.add(roleProductManager);
-
-        //权限们
-        String permitAddProduct = "addProduct";
-        String permitAddOrder = "addOrder";
-
-        List<String> permits = new ArrayList<>();
-        permits.add(permitAddProduct);
-        permits.add(permitAddOrder);
-
-        //登陆每个用户
-        for (User user : users) {
-            if(login(user))
-                System.out.printf("%s \t成功登陆，用的密码是 %s\t %n",user.getName(),user.getPassword());
-            else
-                System.out.printf("%s \t成功失败，用的密码是 %s\t %n",user.getName(),user.getPassword());
-        }
-
-        System.out.println("---------------------------------------------");
-
-        //判断能够登录的用户是否拥有某个角色
-        for (User user : users) {
-            for (String role : roles) {
-                if(login(user)) {
-                    if(hasRole(user, role))
-                        System.out.printf("%s\t 拥有角色: %s\t%n",user.getName(),role);
-                    else
-                        System.out.printf("%s\t 不拥有角色: %s\t%n",user.getName(),role);
-                }
-            }
-        }
-        System.out.println("---------------------------------------------");
-
-        //判断能够登录的用户，是否拥有某种权限
-        for (User user : users) {
-            for (String permit : permits) {
-                if(login(user)) {
-                    if(isPermitted(user, permit))
-                        System.out.printf("%s\t 拥有权限: %s\t%n",user.getName(),permit);
-                    else
-                        System.out.printf("%s\t 不拥有权限: %s\t%n",user.getName(),permit);
-                }
-            }
-        }
     }
 
     private static boolean hasRole(User user, String role) {
@@ -121,7 +65,7 @@ public class TestShiro {
             //验证错误
             return false;
         }
-
+        System.out.println(user.getName()+" "+user.getPassword());
         return subject.isAuthenticated();
     }
 

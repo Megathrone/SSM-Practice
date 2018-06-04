@@ -5,6 +5,16 @@ public class User {
     private int id;
     private String name;
     private String password;
+    private String salt;
+
+    public void setSalt(String salt) {
+        this.salt = salt;
+    }
+
+    public String getSalt() {
+        return salt;
+    }
+
     public String getName() {
         return name;
     }
